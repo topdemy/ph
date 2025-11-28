@@ -41,3 +41,21 @@ docker run \
 
 # Running a single command
 docker run --rm <image-name>:<tag> php artisan about
+
+===
+docker run -d \
+  --name redis_server \
+  -p 6379:6379 \
+  -v redisdata:/data \
+  redis:alpine \
+  redis-server --requirepass "secret"
+
+
+docker run -d \
+  --name postgres_db \
+  -p 5432:5432 \
+  -e POSTGRES_USER=root \
+  -e POSTGRES_PASSWORD="secret" \
+  -e POSTGRES_DB=yekebazar \
+  -v pgdata:/var/lib/postgresql/data \
+  postgres:15-alpine
